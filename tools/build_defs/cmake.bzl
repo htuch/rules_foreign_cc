@@ -61,6 +61,7 @@ def _create_configure_script(configureParameters):
 
     tools = get_tools_info(ctx)
     flags = get_flags_info(ctx)
+    print('HTD flags %s' % flags)
     no_toolchain_file = ctx.attr.cache_entries.get("CMAKE_TOOLCHAIN_FILE") or not ctx.attr.generate_crosstool_file
 
     define_install_prefix = "export INSTALL_PREFIX=\"" + _get_install_prefix(ctx) + "\"\n"
