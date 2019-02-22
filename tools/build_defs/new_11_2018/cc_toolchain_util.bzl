@@ -272,6 +272,17 @@ def get_flags_info(ctx):
     )
     copts = ctx.attr.copts if hasattr(ctx.attr, "copts") else []
 
+    print(cc_common.get_memory_inefficient_command_line(
+            feature_configuration = feature_configuration,
+            action_name = CPP_COMPILE_ACTION_NAME,
+            variables = cc_common.create_compile_variables(
+                feature_configuration = feature_configuration,
+                cc_toolchain = cc_toolchain,
+                user_compile_flags = copts,
+                add_legacy_cxx_options = True,
+            )))
+
+
     return CxxFlagsInfo(
         cc = cc_common.get_memory_inefficient_command_line(
             feature_configuration = feature_configuration,
